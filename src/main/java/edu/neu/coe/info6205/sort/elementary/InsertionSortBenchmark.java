@@ -3,75 +3,103 @@ package edu.neu.coe.info6205.sort.elementary;
 import edu.neu.coe.info6205.sort.BaseHelper;
 import edu.neu.coe.info6205.sort.GenericSort;
 import edu.neu.coe.info6205.sort.Helper;
-import edu.neu.coe.info6205.util.Benchmark_Timer;
-import edu.neu.coe.info6205.util.Config;
-import edu.neu.coe.info6205.util.TimeLogger;
+import edu.neu.coe.info6205.util.*;
 import org.junit.BeforeClass;
 
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.*;
+//import java.util.Arrays;
+//import java.util.Random;
 import java.util.function.Supplier;
 
 
 
 public class InsertionSortBenchmark {
 
-    public InsertionSortBenchmark(int runs, int n ,int m, String type) {
-        this.runs = runs;
-//        this.supplier = new Source(n,m).randomInts(10, type);
-        this.supplier = new Source(n).intsArr(type);
+    public InsertionSortBenchmark(int n, int runs) {
         this.n = n;
+        this.runs = runs;
     }
 
-    public void runBenchmarks(String type) {
+    public void runBenchmarks(int n) {
+        Random r = new Random();
+        ArrayList<Integer> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            list.add(r.nextInt(n));
+        }
+        Integer[] array = list.toArray(new Integer[0]);
+
         System.out.println("InsertionSort Benchmark: N=" + n);
         String description = "Insertion Sort";
-        InsertionSort<Integer> sort = new InsertionSort<>();
-        switch (type) {
-            case "sorted" -> benchmarkInsertionSort(description, sort, timeLoggersOrdered, type);
-            case "random" -> benchmarkInsertionSort(description, sort, timeLoggersRandom, type);
-            case "partially" -> benchmarkInsertionSort(description, sort, timeLoggersPartiallyOrdered, type);
-            case "reverse" -> benchmarkInsertionSort(description, sort, timeLoggersReverseOrdered, type);
-            default -> {
-            }
-        }
-    }
 
-    private void benchmarkInsertionSort(String description, InsertionSort<Integer> insertionSort, final TimeLogger[] timeLoggers, String type) {
-        final double time = new Benchmark_Timer<Integer[]>(
-                description + " (" + type + ")",
+        InsertionSort<Integer> insertionSort = new InsertionSort<>();
+
+//        Supplier<Integer[]> supplier = null;
+//        supplier = () -> array;
+
+        final double timeRandom = new Benchmark_Timer<Integer[]>(
+                description + " (Random)",
                 null,
-                (x)->insertionSort.sort(x,0, x.length),
+                (x)->insertionSort.sort(array.clone(),0, array.length),
                 null
-        ).runFromSupplier(supplier, runs);
-        for (TimeLogger timeLogger : timeLoggers) timeLogger.log(time, n);
-        // END
+        ).run(array, runs);
+        logger.info(Utilities.formatDecimal3Places(timeRandom) + " ms");
+
+//        supplier = () -> {
+//                Arrays.sort(array,0 , n/2);
+//                return array;
+//        };
+        Arrays.sort(array,0 , n/2);
+        final double timePartially = new Benchmark_Timer<Integer[]>(
+                description + " (Partially)",
+                null,
+                (x)->insertionSort.sort(array.clone(),0, array.length),
+                null
+        ).run(array, runs);
+        logger.info(Utilities.formatDecimal3Places(timePartially) + " ms");
+//        for (TimeLogger timeLogger : timeLoggers) timeLogger.log(timePartially, n);
+
+
+//        supplier = () -> {
+//            Arrays.sort(array);
+//            return array;
+//        };
+        Arrays.sort(array);
+        final double timeSorted = new Benchmark_Timer<Integer[]>(
+                description + " (Sorted)",
+                null,
+                (x)->insertionSort.sort(array.clone(),0, array.length),
+                null
+        ).run(array, runs);
+        logger.info(Utilities.formatDecimal3Places(timeSorted) + " ms");
+
+//        supplier = () -> {
+//                Arrays.sort(array, Collections.reverseOrder());
+//                return array;
+//        };
+        Arrays.sort(array, Collections.reverseOrder());
+        final double timeReverse = new Benchmark_Timer<Integer[]>(
+                description + " (Reverse)",
+                null,
+                (x)->insertionSort.sort(array.clone(),0, array.length),
+                null
+        ).run(array, runs);
+        logger.info(Utilities.formatDecimal3Places(timeReverse) + " ms");
+
     }
 
     public static void main(String[] args) {
         int runs = 10;
-        for(int i=250; i<16000; i*=2) {
-            new InsertionSortBenchmark(runs, i, i, "random").runBenchmarks("random");
-            new InsertionSortBenchmark(runs, i, i, "reverse").runBenchmarks("reverse");
-            new InsertionSortBenchmark(runs, i, i, "partially").runBenchmarks("partially");
-            new InsertionSortBenchmark(runs, i, i, "sorted").runBenchmarks("sorted");
+        for(int n=250; n<=16000; n*=2) {
+            new InsertionSortBenchmark(n, runs).runBenchmarks(n);
         }
     }
 
-    private final static TimeLogger[] timeLoggersRandom = {
+    private final static TimeLogger[] timeLoggers = {
             new TimeLogger("Random Raw time per run (mSec): ", (time, n) -> time)
-    };
-    private final static TimeLogger[] timeLoggersOrdered = {
-            new TimeLogger("Ordered Raw time per run (mSec): ", (time, n) -> time)
-    };
-    private final static TimeLogger[] timeLoggersPartiallyOrdered = {
-            new TimeLogger("Partially Raw time per run (mSec): ", (time, n) -> time)
-    };
-    private final static TimeLogger[] timeLoggersReverseOrdered = {
-            new TimeLogger("Reverse Raw time per run (mSec): ", (time, n) -> time)
     };
 
     private final int runs;
-    private final Supplier<Integer[]> supplier;
     private final int n;
+    final static LazyLogger logger = new LazyLogger(InsertionSortBenchmark.class);
 }
