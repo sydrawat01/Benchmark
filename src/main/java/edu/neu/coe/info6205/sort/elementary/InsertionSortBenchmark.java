@@ -50,7 +50,7 @@ public class InsertionSortBenchmark {
 
     public static void main(String[] args) {
         int runs = 10;
-        for(int i=250; i<=16000; i*=2) {
+        for(int i=250; i<16000; i*=2) {
             new InsertionSortBenchmark(runs, i, i, "random").runBenchmarks("random");
             new InsertionSortBenchmark(runs, i, i, "reverse").runBenchmarks("reverse");
             new InsertionSortBenchmark(runs, i, i, "partially").runBenchmarks("partially");
