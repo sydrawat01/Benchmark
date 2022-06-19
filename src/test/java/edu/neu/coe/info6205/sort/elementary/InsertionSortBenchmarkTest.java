@@ -41,7 +41,7 @@ public class InsertionSortBenchmarkTest {
         final Benchmark<Integer[]> benchmark = new Benchmark_Timer<>(
                 description + " for " + N + " Integers",
                 (xs) -> Arrays.copyOf(xs, xs.length),
-                (xs) -> sort(xs),
+                (xs) -> sort.sort(xs, 0, xs.length),
                 null
         );
         logger.info(Utilities.formatDecimal3Places(benchmark.runFromSupplier(supplier, 100)) + " ms");
