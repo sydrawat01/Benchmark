@@ -1,17 +1,8 @@
 package edu.neu.coe.info6205.sort.elementary;
 
-import edu.neu.coe.info6205.sort.BaseHelper;
-import edu.neu.coe.info6205.sort.GenericSort;
-import edu.neu.coe.info6205.sort.Helper;
 import edu.neu.coe.info6205.util.*;
-import org.junit.BeforeClass;
 
-import java.io.IOException;
 import java.util.*;
-//import java.util.Arrays;
-//import java.util.Random;
-import java.util.function.Supplier;
-
 
 
 public class InsertionSortBenchmark {
@@ -34,21 +25,14 @@ public class InsertionSortBenchmark {
 
         InsertionSort<Integer> insertionSort = new InsertionSort<>();
 
-//        Supplier<Integer[]> supplier = null;
-//        supplier = () -> array;
-
         final double timeRandom = new Benchmark_Timer<Integer[]>(
                 description + " (Random)",
                 null,
                 (x)->insertionSort.sort(array.clone(),0, array.length),
                 null
         ).run(array, runs);
-        logger.info(Utilities.formatDecimal3Places(timeRandom) + " ms");
+        for (TimeLogger timeLogger : timeLoggers) timeLogger.log(timeRandom, n);
 
-//        supplier = () -> {
-//                Arrays.sort(array,0 , n/2);
-//                return array;
-//        };
         Arrays.sort(array,0 , n/2);
         final double timePartially = new Benchmark_Timer<Integer[]>(
                 description + " (Partially)",
@@ -56,14 +40,8 @@ public class InsertionSortBenchmark {
                 (x)->insertionSort.sort(array.clone(),0, array.length),
                 null
         ).run(array, runs);
-        logger.info(Utilities.formatDecimal3Places(timePartially) + " ms");
-//        for (TimeLogger timeLogger : timeLoggers) timeLogger.log(timePartially, n);
+        for (TimeLogger timeLogger : timeLoggers) timeLogger.log(timePartially, n);
 
-
-//        supplier = () -> {
-//            Arrays.sort(array);
-//            return array;
-//        };
         Arrays.sort(array);
         final double timeSorted = new Benchmark_Timer<Integer[]>(
                 description + " (Sorted)",
@@ -71,12 +49,8 @@ public class InsertionSortBenchmark {
                 (x)->insertionSort.sort(array.clone(),0, array.length),
                 null
         ).run(array, runs);
-        logger.info(Utilities.formatDecimal3Places(timeSorted) + " ms");
+        for (TimeLogger timeLogger : timeLoggers) timeLogger.log(timeSorted, n);
 
-//        supplier = () -> {
-//                Arrays.sort(array, Collections.reverseOrder());
-//                return array;
-//        };
         Arrays.sort(array, Collections.reverseOrder());
         final double timeReverse = new Benchmark_Timer<Integer[]>(
                 description + " (Reverse)",
@@ -84,19 +58,18 @@ public class InsertionSortBenchmark {
                 (x)->insertionSort.sort(array.clone(),0, array.length),
                 null
         ).run(array, runs);
-        logger.info(Utilities.formatDecimal3Places(timeReverse) + " ms");
-
+        for (TimeLogger timeLogger : timeLoggers) timeLogger.log(timeReverse, n);
     }
 
     public static void main(String[] args) {
-        int runs = 10;
+        int runs = 100;
         for(int n=250; n<=16000; n*=2) {
             new InsertionSortBenchmark(n, runs).runBenchmarks(n);
         }
     }
 
     private final static TimeLogger[] timeLoggers = {
-            new TimeLogger("Random Raw time per run (mSec): ", (time, n) -> time)
+            new TimeLogger("Raw time per run (mSec): ", (time, n) -> time)
     };
 
     private final int runs;
