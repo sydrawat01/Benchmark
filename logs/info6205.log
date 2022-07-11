@@ -71,4 +71,60 @@ InsertionSort Benchmark: N=16000
 2022-06-19 16:47:27 DEBUG Config - Config.get(instrumenting, inversions) = 1
 2022-06-19 16:47:27 DEBUG Config - Config.get(instrumenting, fixes) = true
 2022-06-19 16:47:27 DEBUG Config - Config.get(instrumenting, hits) = true
-2022-06-19 16:47:27 DEBUG Config - Config.get(helper, cutoff) =
+2022-06-19 16:47:27 DEBUG Config - Config.get(helper, cutoff) =2022-07-10 20:28:44 INFO  Benchmark_Timer - Begin run: testWaitPeriods with 2 runs
+2022-07-10 20:29:03 INFO  Benchmark_Timer - Begin run: Insertion Sort (Random) with 100 runs
+2022-07-10 20:29:03 INFO  TimeLogger - Raw time per run (mSec):  .23
+2022-07-10 20:29:03 INFO  Benchmark_Timer - Begin run: Insertion Sort (Partially) with 100 runs
+2022-07-10 20:29:03 INFO  TimeLogger - Raw time per run (mSec):  .07
+2022-07-10 20:29:03 INFO  Benchmark_Timer - Begin run: Insertion Sort (Sorted) with 100 runs
+2022-07-10 20:29:03 INFO  TimeLogger - Raw time per run (mSec):  .00
+2022-07-10 20:29:03 INFO  Benchmark_Timer - Begin run: Insertion Sort (Reverse) with 100 runs
+2022-07-10 20:29:03 INFO  TimeLogger - Raw time per run (mSec):  .29
+2022-07-10 20:29:03 INFO  Benchmark_Timer - Begin run: Insertion Sort (Random) with 100 runs
+2022-07-10 20:29:03 INFO  TimeLogger - Raw time per run (mSec):  1.62
+2022-07-10 20:29:03 INFO  Benchmark_Timer - Begin run: Insertion Sort (Partially) with 100 runs
+2022-07-10 20:29:03 INFO  TimeLogger - Raw time per run (mSec):  .30
+2022-07-10 20:29:03 INFO  Benchmark_Timer - Begin run: Insertion Sort (Sorted) with 100 runs
+2022-07-10 20:29:03 INFO  TimeLogger - Raw time per run (mSec):  .00
+2022-07-10 20:29:03 INFO  Benchmark_Timer - Begin run: Insertion Sort (Reverse) with 100 runs
+2022-07-10 20:29:03 INFO  TimeLogger - Raw time per run (mSec):  .66
+2022-07-10 20:29:03 INFO  Benchmark_Timer - Begin run: Insertion Sort (Random) with 100 runs
+2022-07-10 20:29:03 INFO  TimeLogger - Raw time per run (mSec):  2.00
+2022-07-10 20:29:03 INFO  Benchmark_Timer - Begin run: Insertion Sort (Partially) with 100 runs
+2022-07-10 20:29:04 INFO  TimeLogger - Raw time per run (mSec):  1.50
+2022-07-10 20:29:04 INFO  Benchmark_Timer - Begin run: Insertion Sort (Sorted) with 100 runs
+2022-07-10 20:29:04 INFO  TimeLogger - Raw time per run (mSec):  .01
+2022-07-10 20:29:04 INFO  Benchmark_Timer - Begin run: Insertion Sort (Reverse) with 100 runs
+2022-07-10 20:29:04 INFO  TimeLogger - Raw time per run (mSec):  5.24
+2022-07-10 20:29:04 INFO  Benchmark_Timer - Begin run: Insertion Sort (Random) with 100 runs
+2022-07-10 20:29:05 INFO  TimeLogger - Raw time per run (mSec):  4.99
+2022-07-10 20:29:05 INFO  Benchmark_Timer - Begin run: Insertion Sort (Partially) with 100 runs
+2022-07-10 20:29:05 INFO  TimeLogger - Raw time per run (mSec):  3.74
+2022-07-10 20:29:05 INFO  Benchmark_Timer - Begin run: Insertion Sort (Sorted) with 100 runs
+2022-07-10 20:29:05 INFO  TimeLogger - Raw time per run (mSec):  .01
+2022-07-10 20:29:05 INFO  Benchmark_Timer - Begin run: Insertion Sort (Reverse) with 100 runs
+2022-07-10 20:29:06 INFO  TimeLogger - Raw time per run (mSec):  10.04
+2022-07-10 20:29:06 INFO  Benchmark_Timer - Begin run: Insertion Sort (Random) with 100 runs
+2022-07-10 20:29:08 INFO  TimeLogger - Raw time per run (mSec):  19.68
+2022-07-10 20:29:08 INFO  Benchmark_Timer - Begin run: Insertion Sort (Partially) with 100 runs
+2022-07-10 20:29:10 INFO  TimeLogger - Raw time per run (mSec):  15.73
+2022-07-10 20:29:10 INFO  Benchmark_Timer - Begin run: Insertion Sort (Sorted) with 100 runs
+2022-07-10 20:29:10 INFO  TimeLogger - Raw time per run (mSec):  .02
+2022-07-10 20:29:10 INFO  Benchmark_Timer - Begin run: Insertion Sort (Reverse) with 100 runs
+2022-07-10 20:29:15 INFO  TimeLogger - Raw time per run (mSec):  40.93
+2022-07-10 20:29:15 INFO  Benchmark_Timer - Begin run: Insertion Sort (Random) with 100 runs
+2022-07-10 20:29:23 INFO  TimeLogger - Raw time per run (mSec):  78.72
+2022-07-10 20:29:23 INFO  Benchmark_Timer - Begin run: Insertion Sort (Partially) with 100 runs
+2022-07-10 20:29:30 INFO  TimeLogger - Raw time per run (mSec):  63.68
+2022-07-10 20:29:30 INFO  Benchmark_Timer - Begin run: Insertion Sort (Sorted) with 100 runs
+2022-07-10 20:29:30 INFO  TimeLogger - Raw time per run (mSec):  .05
+2022-07-10 20:29:30 INFO  Benchmark_Timer - Begin run: Insertion Sort (Reverse) with 100 runs
+2022-07-10 20:29:48 INFO  TimeLogger - Raw time per run (mSec):  159.90
+2022-07-10 20:29:48 INFO  Benchmark_Timer - Begin run: Insertion Sort (Random) with 100 runs
+2022-07-10 20:30:27 INFO  TimeLogger - Raw time per run (mSec):  352.47
+2022-07-10 20:30:27 INFO  Benchmark_Timer - Begin run: Insertion Sort (Partially) with 100 runs
+2022-07-10 20:30:56 INFO  TimeLogger - Raw time per run (mSec):  269.97
+2022-07-10 20:30:56 INFO  Benchmark_Timer - Begin run: Insertion Sort (Sorted) with 100 runs
+2022-07-10 20:30:56 INFO  TimeLogger - Raw time per run (mSec):  .11
+2022-07-10 20:30:56 INFO  Benchmark_Timer - Begin run: Insertion Sort (Reverse) with 100 runs
+2022-07-10 20:32:12 INFO  TimeLogger - Raw time per run (mSec):  682.46
